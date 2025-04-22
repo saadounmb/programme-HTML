@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Daily Quote</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .quote-box {
+      background-color: white;
+      padding: 30px;
+      border-radius: 20px;
+      width: 80%;
+      max-width: 400px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    #quote {
+      font-size: 1.2em;
+      color: #333;
+      min-height: 80px;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      background-color: #667eea;
+      color: white;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #5a67d8;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="quote-box">
+      <p id="quote">Click below to get inspired!</p>
+      <button onclick="newQuote()">Get Quote</button>
+    </div>
+  </div>
+
+  <script>
+    const quotes = [
+      "Believe you can and you're halfway there.",
+      "The best time to plant a tree was 20 years ago. The second best time is now.",
+      "Dream big and dare to fail.",
+      "It always seems impossible until it's done.",
+      "Don’t wait. The time will never be just right.",
+      "You are capable of amazing things."
+    ];
+
+    function newQuote() {
+      const quoteElement = document.getElementById('quote');
+      const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+
+      quoteElement.style.opacity = 0;
+
+      setTimeout(() => {
+        quoteElement.textContent = randomQuote;
+        quoteElement.style.animation = 'none';
+        void quoteElement.offsetWidth;
+        quoteElement.style.animation = 'fadeIn 1s forwards';
+      }, 300);
+    }
+  </script>
+</body>
+</html>
